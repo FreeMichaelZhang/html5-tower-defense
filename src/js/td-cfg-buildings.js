@@ -35,7 +35,8 @@ _TD.a.push(function (TD) {
 				bullet_speed: 0,
 				life: 100,
 				shield: 500,
-				cost: 5
+				cost: 5,
+				deceleration: 0
 			},
 
 			// 炮台
@@ -48,6 +49,7 @@ _TD.a.push(function (TD) {
 				life: 100,
 				shield: 100,
 				cost: 300,
+				deceleration: 0,
 				_upgrade_rule_damage: function (old_level, old_value) {
 					return old_value * (old_level <= 10 ? 1.2 : 1.3);
 				}
@@ -62,7 +64,8 @@ _TD.a.push(function (TD) {
 				bullet_speed: 6,
 				life: 100,
 				shield: 50,
-				cost: 100
+				cost: 100,
+				deceleration: 0
 			},
 
 			// 重机枪
@@ -75,6 +78,7 @@ _TD.a.push(function (TD) {
 				life: 100,
 				shield: 200,
 				cost: 800,
+				deceleration: 0,
 				_upgrade_rule_damage: function (old_level, old_value) {
 					return old_value * 1.3;
 				}
@@ -89,7 +93,21 @@ _TD.a.push(function (TD) {
 //				bullet_speed: 10, // laser_gun 的 bullet_speed 属性没有用
 				life: 100,
 				shield: 100,
-				cost: 2000
+				cost: 2000,
+				deceleration: 0
+			},
+
+			// 减速枪
+			"glue_gun": {
+				damage: 1,
+				range: 2,
+				max_range: 3,
+				speed: 2,
+				bullet_speed: 4,
+				life: 100,
+				shield: 50,
+				cost: 200,
+				deceleration: 1 // 减速
 			}
 		};
 

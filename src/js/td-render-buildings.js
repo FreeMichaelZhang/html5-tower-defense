@@ -9,6 +9,8 @@
 
 // _TD.a.push begin
 _TD.a.push(function (TD) {
+	// 不同级别武器的主颜色定义
+	let bgColor = ["white", "green", "cyan", "blue", "yellow", "orange", "red", "purple"];
 
 	function lineTo2(ctx, x0, y0, x1, y1, len) {
 		var x2, y2, a, b, p, xt,
@@ -73,7 +75,7 @@ _TD.a.push(function (TD) {
 			ctx.stroke();
 
 			ctx.lineWidth = _TD.retina;
-			ctx.fillStyle = "#060";
+			ctx.fillStyle = bgColor[b.level % 8];
 			ctx.beginPath();
 			ctx.arc(b.cx, b.cy, 7 * _TD.retina, 0, Math.PI * 2, true);
 			ctx.closePath();
@@ -108,7 +110,7 @@ _TD.a.push(function (TD) {
 			ctx.stroke();
 
 			ctx.lineWidth = _TD.retina;
-			ctx.fillStyle = "#66c";
+			ctx.fillStyle = bgColor[b.level % 8];
 			ctx.beginPath();
 			ctx.arc(b.cx, b.cy, 5 * _TD.retina, 0, Math.PI * 2, true);
 			ctx.closePath();
@@ -143,7 +145,7 @@ _TD.a.push(function (TD) {
 			ctx.stroke();
 
 			ctx.lineWidth = _TD.retina;
-			ctx.fillStyle = "#630";
+			ctx.fillStyle = bgColor[b.level % 8];
 			ctx.beginPath();
 			ctx.arc(b.cx, b.cy, gs2 - 5 * _TD.retina, 0, Math.PI * 2, true);
 			ctx.closePath();
@@ -197,7 +199,7 @@ _TD.a.push(function (TD) {
 			ctx.fill();
 			ctx.stroke();
 
-			ctx.fillStyle = "#60f";
+			ctx.fillStyle = bgColor[b.level % 8];
 			ctx.beginPath();
 			ctx.arc(b.cx, b.cy, 7 * _TD.retina, 0, Math.PI * 2, true);
 			ctx.closePath();
@@ -223,7 +225,37 @@ _TD.a.push(function (TD) {
 			ctx.closePath();
 			ctx.fill();
 			ctx.stroke();
-		}
+		},
+		"glue_gun": function (b, ctx, map, gs, gs2) {
+			var target_position = b.getTargetPosition();
+
+			ctx.fillStyle = bgColor[b.level % 8];
+			ctx.strokeStyle = "#000";
+			ctx.beginPath();
+			ctx.lineWidth = _TD.retina;
+			ctx.lineJoin = "round"; 
+			ctx.moveTo(b.cx, b.cy - 6);
+			ctx.lineTo(b.cx - 10, b.cy + 10);
+			ctx.lineTo(b.cx + 10, b.cy + 10);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			ctx.lineWidth = 3 * _TD.retina;
+			ctx.beginPath();
+			ctx.moveTo(b.cx, b.cy - 5);
+			b.muzzle = lineTo2(ctx, b.cx, b.cy + 5, target_position[0], target_position[1], gs2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			ctx.fillStyle = "#ccf";
+			ctx.beginPath();
+			ctx.arc(b.cx + 1, b.cy + 5, 2 * _TD.retina, 0, Math.PI * 2, true);
+			ctx.closePath();
+			ctx.fill();
+
+		},
 	};
 
 	TD.renderBuilding = function (building) {

@@ -39,7 +39,7 @@ _TD.a.push(function (TD) {
 			 *         "LMG": 轻机枪
 			 *         "HMG": 重机枪
 			 *         "laser_gun": 激光枪
-			 *
+			 *         "glue_gun": 减速枪
 			 */
 			this.type = cfg.type;
 
@@ -280,7 +280,7 @@ _TD.a.push(function (TD) {
 
 			var attrs = [
 				// 可升级的变量
-				"damage", "range", "speed", "life", "shield"
+				"damage", "range", "speed", "life", "shield", "deceleration"
 			], i, l = attrs.length;
 			for (i = 0; i < l; i++)
 				this._upgrade2(attrs[i]);
@@ -381,7 +381,7 @@ _TD.a.push(function (TD) {
 
 			var msg = "建筑工事";
 			if (this.map.is_main_map) {
-				msg = TD._t("building_info" + (this.type == "wall" ? "_wall" : ""), [TD._t("building_name_" + this.type), this.level, this.damage, this.speed, this.range, this.killed]);
+				msg = TD._t("building_info" + (this.type == "wall" ? "_wall" : ""), [TD._t("building_name_" + this.type), this.level, this.damage, this.speed, this.range, this.deceleration, this.killed]);
 			} else {
 				msg = TD._t("building_intro_" + this.type, [TD.getDefaultBuildingAttributes(this.type).cost]);
 			}

@@ -164,6 +164,10 @@ _TD.a.push(function (TD) {
 								building: "laser_gun"
 							},
 							{
+								pos: [1, 1],
+								building: "glue_gun"
+							},
+							{
 								pos: [2, 2],
 								building: "wall"
 							}

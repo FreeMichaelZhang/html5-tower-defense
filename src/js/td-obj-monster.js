@@ -82,6 +82,12 @@ _TD.a.push(function (TD) {
 			if (damage <= min_damage) damage = min_damage;
 
 			this.life -= damage;
+
+			// 减速，最多减到2
+			if (this.speed >= 2 + building.deceleration) {
+				this.speed -= building.deceleration;
+			}
+
 			TD.score += Math.floor(Math.sqrt(damage));
 			if (this.life <= 0) {
 				this.beKilled(building);

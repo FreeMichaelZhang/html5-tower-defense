@@ -94,16 +94,16 @@ _TD.a.push(function (TD) {
 				life: 100,
 				shield: 100,
 				cost: 2000,
-				deceleration: 0
+				deceleration: 10
 			},
 
 			// 减速枪
 			"glue_gun": {
-				damage: 1,
+				damage: 2,
 				range: 2,
-				max_range: 3,
-				speed: 2,
-				bullet_speed: 4,
+				max_range: 5,
+				speed: 3,
+				bullet_speed: 5,
 				life: 100,
 				shield: 50,
 				cost: 200,

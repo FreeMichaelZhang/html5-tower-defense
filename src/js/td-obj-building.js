@@ -75,7 +75,7 @@ _TD.a.push(function (TD) {
 		/**
 		 * 切换选中 / 未选中状态
 		 */
-		toggleSelected: function () {
+		toggleSelected: function (rightMouse) {
 			this.is_selected = !this.is_selected;
 			this.grid.hightLight(this.is_selected); // 高亮
 			var _this = this;
@@ -120,6 +120,14 @@ _TD.a.push(function (TD) {
 				if (this.map.selected_building) {
 					this.scene.panel.btn_upgrade.show();
 					this.scene.panel.btn_sell.show();
+					if (rightMouse == 1) {
+						let cost = this.getUpgradeCost();
+						if (cost <= TD.money) {
+							TD.money -= cost;
+							this.money += cost;
+							this.upgrade();
+						}
+					}
 					this.updateBtnDesc();
 				} else {
 					this.scene.panel.btn_upgrade.hide();
@@ -395,9 +403,9 @@ _TD.a.push(function (TD) {
 			}
 		},
 
-		onClick: function () {
+		onClick: function (rightMouse) {
 			if (this.is_pre_building || this.scene.state != 1) return;
-			this.toggleSelected();
+			this.toggleSelected(rightMouse);
 		}
 	};
 

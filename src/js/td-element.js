@@ -71,8 +71,8 @@ _TD.a.push(function (TD) {
 
 					// 鼠标点击了元素
 					case "click":
-						this.on("click", function () {
-							_this.onClick();
+						this.on("click", function (rightMouse) {
+							_this.onClick(rightMouse);
 						});
 						break;
 				}

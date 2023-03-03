@@ -81,6 +81,17 @@ var _TD = {
 					_this.click(xy[0], xy[1]);
 				};
 
+				this.canvas.oncontextmenu = function (e) {
+					e.preventDefault();
+				};
+
+				this.canvas.onmousedown = function (e) {
+					if (e.button == 2) {
+						let xy = _this.getEventXY.call(_this, e);
+						_this.rightclick(xy[0], xy[1]);
+					}
+				};
+
 				this.is_paused = false;
 				this.stage.start();
 				this.step();
@@ -193,7 +204,16 @@ var _TD = {
 			 * @param y
 			 */
 			click: function (x, y) {
-				this.eventManager.click(x, y);
+				this.eventManager.click(x, y, 0);
+			},
+
+			/**
+			 * 右键点击事件
+			 * @param x
+			 * @param y
+			 */
+			rightclick: function (x, y) {
+				this.eventManager.click(x, y, 1);
 			},
 
 			/**

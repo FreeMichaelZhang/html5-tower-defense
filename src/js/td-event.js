@@ -18,6 +18,7 @@ _TD.a.push(function (TD) {
 		ex: -1, // 事件坐标 x
 		ey: -1, // 事件坐标 y
 		_registers: {}, // 注册监听事件的元素
+		rightMouse: 0, // 是否为鼠标右键点击
 
 		// 目前支持的事件类型
 		ontypes: [
@@ -143,7 +144,9 @@ _TD.a.push(function (TD) {
 
 				} else {
 					// click 事件
-					if (is_evt_on && et == "click") f();
+					if (is_evt_on && et == "click") {
+						f(this.rightMouse);
+					}
 				}
 			}
 
@@ -175,10 +178,11 @@ _TD.a.push(function (TD) {
 		 * @param ex {Number}
 		 * @param ey {Number}
 		 */
-		click: function (ex, ey) {
+		click: function (ex, ey, rightMouse) {
 			this.current_type = "click";
 			this.ex = ex;
 			this.ey = ey;
+			this.rightMouse = rightMouse;
 		}
 	};
 

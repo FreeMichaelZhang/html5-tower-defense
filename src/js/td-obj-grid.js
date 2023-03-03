@@ -244,7 +244,7 @@ _TD.a.push(function (TD) {
 		/**
 		 * 鼠标点击了当前格子事件
 		 */
-		onClick: function () {
+		onClick: function (rightMouse) {
 			if (this.scene.state != 1) return;
 
 			if (TD.mode == "build" && this.map.is_main_map && !this.building) {
@@ -258,7 +258,7 @@ _TD.a.push(function (TD) {
 				}
 			} else if (!this.building && this.map.selected_building) {
 				// 取消选中建筑
-				this.map.selected_building.toggleSelected();
+				this.map.selected_building.toggleSelected(rightMouse);
 				this.map.selected_building = null;
 			}
 		}

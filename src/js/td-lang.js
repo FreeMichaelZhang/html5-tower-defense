@@ -137,15 +137,16 @@ _TD.a.push(function (TD) {
 		},
 
 		/**
-		 * 传入一个数组，将其按速度倒序排序并返回
+		 * 传入一个数组，将其按速度倒序+生命值正序排序并返回
 		 * 返回的是一个新的数组，原数组不变
 		 * @param list {Array}
 		 * @return {Array}
 		 */
 		speedSort: function (list) {
-			var a = list.concat();
+			let a = list.concat();
 			return a.sort(function (x, y) {
-				return y.speed - x.speed;
+				if (x.speed != y.speed) return y.speed - x.speed;
+				return x.life - y.life;
 			});
 		},
 
